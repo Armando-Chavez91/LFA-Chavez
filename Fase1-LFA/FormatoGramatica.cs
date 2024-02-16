@@ -21,17 +21,17 @@ namespace Fase1_LFA
 <<<<<<< Updated upstream
         public static string AnalyseFile(string data, ref int line){
             string mensaje = "";
-            bool first = true;
-            bool setExists = false;
-            bool actionsError = false;
-            bool actionExists = false;
+             bool first = true;
+             bool setExists = false;
+             bool tokenExists = false;
+             bool actionExists = false;
+        
+             int actionCount = 0;
+             int actionsError = 0;
+             int tokenCount = 0;
+             int setCount = 0;
 
-            int actionCount = 0;
-            int actionError = 0;
-            int tokenCount = 0;
-            int setCount = 0;
-
-            String[] lines = data.split('\n');
+            String[] lines = data.Split('\n');
             int count = 0;
 
             foreach (var item in lines)
