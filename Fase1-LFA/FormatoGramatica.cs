@@ -292,6 +292,17 @@ private static void CheckForRepeatedTokens(List<int> tokens, List<Action> action
      {
          throw new Exception($"El nombre del TOKEN {line[0]} no es valido.");
      }
+         string newToken = line[1].Trim();
+
+     if (string.IsNullOrEmpty(tokens) | string.IsNullOrWhiteSpace(tokens))
+     {
+         tokens = $"({newToken})";
+     }
+     else
+     {
+         tokens += $"|({newToken})";
+     }
+ }
         }
 =======
         public static Dictionary<int, string> actionReference = new Dictionary<int, string>();
