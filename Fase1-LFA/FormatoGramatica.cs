@@ -82,9 +82,45 @@ namespace Fase1_LFA
 
                  setCount++;
              }
+                     else if (tokenExists)
+             {
+                 Match m = Regex.Match(item, TOKENS);
+                 if (item.Contains("ACTIONS"))
+                 {
+                     if (tokenCount < 1)
+                     {
+                         line = count;
+                         return "Error: Se esperaba almenos un TOKEN";
+                     }
+                     actionCount++;
+                     tokenExists = false;
+                     actionExists = true;
+                 }
+                 else
+                 {
+                     if (!m.Success)
+                     {
+                         return $"Error en linea: {count}";
+                     }
+                     tokenCount++;
+                 }
+             }
+             else if (actionExists)
+             {
+                 if (item.Contains("ERROR"))
+                 {
+                     actionsError++;
+                 }
+                 Match actMatch = Regex.Match(item, ACTIONSANDERRORS);
+                 if (!actMatch.Success)
+                 {
+                     return $"Error en linea: {count}";
+                 }
+             }
+         }
             }
-             //   
-            }
+            
+            
         }
 =======
         public static Dictionary<int, string> actionReference = new Dictionary<int, string>();
