@@ -130,8 +130,51 @@ namespace Fase1_LFA
      line = count;
      return mensaje;
  } 
-            }
-            }
+}
+}
+    
+ private static void AddNewSET(ref Dictionary<string, string[]> sets, string text)
+ {
+     List<string> asciiValues = new List<string>();
+     string setName = "";
+
+     string[] line = text.Split('=');
+
+     setName = line[0].Trim();//this is the set name
+     line[1] = line[1].Replace(" ", "");//this are the values
+
+     string[] values = line[1].Split('+');
+
+     foreach (var item in values)
+     {
+         string[] tmpLimits = item.Split('.');
+
+         List<string> Limits = new List<string>();
+
+         //format
+         foreach (var i in tmpLimits)
+         {
+             if (!string.IsNullOrEmpty(i))
+             {
+                 Limits.Add(i);
+             }
+         }
+
+         if (Limits.Count == 2)
+         {
+             int lowerLimit = formatSET(Limits[0]);
+             int upperLimit = formatSET(Limits[1]); ;
+
+             //Add range of values
+             asciiValues.Add($"{lowerLimit},{upperLimit}");
+         }
+         else if (Limits.Count == 1)
+         {
+             int character = formatSET(Limits[0]);
+
+             asciiValues.Add(character.ToString());
+         }
+     }
         }
 =======
         public static Dictionary<int, string> actionReference = new Dictionary<int, string>();
