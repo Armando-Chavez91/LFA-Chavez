@@ -8,6 +8,7 @@ namespace Fase1_LFA
 {
     internal class accion
     {
-
+        public string ActionName;
+        public Dictionary<int, string> ActionValues = new Dictionary<int, string>();
     }
 }
