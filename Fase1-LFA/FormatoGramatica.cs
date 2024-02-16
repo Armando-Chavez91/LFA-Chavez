@@ -133,6 +133,36 @@ namespace Fase1_LFA
 }
 }
 
+ private static string[] SplitToken(string expression)
+ {
+     string functionName = "";
+     string[] token = { "", "" };
+
+     for (int i = 0; i < expression.Length; i++)
+     {
+         if (expression[i] != '=')
+         {
+             token[0] += expression[i]; 
+         }
+         else //borrar signos de =
+         {
+             string tmp = "";
+
+             for (int j = i + 1; j < expression.Length; j++)
+             {
+                 tmp += expression[j];
+             }
+
+             token[1] = removeActionsFromExpression(tmp, ref functionName); 
+             token[1] = token[1].Trim();
+             break;
+         }
+     }
+
+
+     return token;
+ }
+
 private static void CheckForRepeatedTokens(List<int> tokens, List<Action> actionsList) 
 {
     List<int> repeated = new List<int>();
