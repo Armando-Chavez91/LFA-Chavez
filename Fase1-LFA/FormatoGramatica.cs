@@ -117,10 +117,21 @@ namespace Fase1_LFA
                      return $"Error en linea: {count}";
                  }
              }
-         }
+        
+            
+                if (actionCount < 1)
+     {
+         return $"Error: Se esperaba la sección de ACTIONS";
+     }
+     if (actionsError < 1)
+     {
+         return $"Error: Se esperaba una la sección de ERROR";
+     }
+     line = count;
+     return mensaje;
+ } 
             }
-            
-            
+            }
         }
 =======
         public static Dictionary<int, string> actionReference = new Dictionary<int, string>();
