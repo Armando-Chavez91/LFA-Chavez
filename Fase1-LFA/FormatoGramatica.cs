@@ -18,6 +18,7 @@ namespace Fase1_LFA
         private static string ACTIONSANDERRORS
             = @"^((\s*RESERVADAS\s*\(\s*\)\s*)+|{+\s*|(\s*[0-9]+\s*=\s*'([A-Z]|[a-z]|[0-9])+'\s*)+|}+\s*|(\s*([A-Z]|[a-z]|[0-9])\s*\(\s*\)\s*)+|{+\s*|(\s*[0-9]+\s*=\s*'([A-Z]|[a-z]|[0-9])+'\s*|}+\s)*(\s*ERROR\s*=\s*[0-9]+\s*))$"; 
 
+<<<<<<< Updated upstream
         public static string AnalyseFile(string data, ref int line){
             string mensaje = "";
             bool first = true;
@@ -33,5 +34,13 @@ namespace Fase1_LFA
             String[] lines = data.split('\n');
             int count = 0;
         }
+=======
+        public static Dictionary<int, string> actionReference = new Dictionary<int, string>();
+
+
+        
+>>>>>>> Stashed changes
     }
+
+
 }

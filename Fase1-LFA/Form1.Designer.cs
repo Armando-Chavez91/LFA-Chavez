@@ -66,6 +66,7 @@
             BTNUpload.TabIndex = 3;
             BTNUpload.Text = "Cargar Gramática";
             BTNUpload.UseVisualStyleBackColor = true;
+            BTNUpload.Click += BTNUpload_Click;
             // 
             // button2
             // 
