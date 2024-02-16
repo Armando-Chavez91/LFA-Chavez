@@ -18,6 +18,20 @@ namespace Fase1_LFA
         private static string ACTIONSANDERRORS
             = @"^((\s*RESERVADAS\s*\(\s*\)\s*)+|{+\s*|(\s*[0-9]+\s*=\s*'([A-Z]|[a-z]|[0-9])+'\s*)+|}+\s*|(\s*([A-Z]|[a-z]|[0-9])\s*\(\s*\)\s*)+|{+\s*|(\s*[0-9]+\s*=\s*'([A-Z]|[a-z]|[0-9])+'\s*|}+\s)*(\s*ERROR\s*=\s*[0-9]+\s*))$"; 
 
-        
+        public static string AnalyseFile(string data, ref int line){
+            string mensaje = "";
+            bool first = true;
+            bool setExists = false;
+            bool actionsError = false;
+            bool actionExists = false;
+
+            int actionCount = 0;
+            int actionError = 0;
+            int tokenCount = 0;
+            int setCount = 0;
+
+            String[] lines = data.split('\n');
+            int count = 0;
+        }
     }
 }
