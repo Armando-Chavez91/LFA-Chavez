@@ -147,7 +147,23 @@ namespace Fase1_LFA
                  result += $"'{text[i + 1]}'";
                  i += 2;
              }
-             
+             else if (text[i] == '{')
+{
+    int counter = 0;
+    char? actualChar = text[i];
+
+    while (actualChar != '}')
+    {
+        counter++;
+        actualChar = text[i + counter];
+        functionName += actualChar;
+    }
+
+    functionName = functionName.Replace("}", "");
+    functionName = functionName.Replace(" ", "");
+
+    i += counter;
+}
              else
              {
                  result += text[i];
