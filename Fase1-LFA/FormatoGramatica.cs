@@ -140,8 +140,8 @@ namespace Fase1_LFA
 
      string[] line = text.Split('=');
 
-     setName = line[0].Trim();//this is the set name
-     line[1] = line[1].Replace(" ", "");//this are the values
+     setName = line[0].Trim();
+     line[1] = line[1].Replace(" ", "");
 
      string[] values = line[1].Split('+');
 
@@ -165,7 +165,7 @@ namespace Fase1_LFA
              int lowerLimit = formatSET(Limits[0]);
              int upperLimit = formatSET(Limits[1]); ;
 
-             //Add range of values
+        
              asciiValues.Add($"{lowerLimit},{upperLimit}");
          }
          else if (Limits.Count == 1)
