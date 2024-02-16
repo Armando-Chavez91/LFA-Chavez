@@ -33,13 +33,64 @@ namespace Fase1_LFA
 
             String[] lines = data.split('\n');
             int count = 0;
+
+            foreach (var item in lines)
+            {
+                count++
+                if(!string.IsNullOrWhiteSpace(item) && !string.IsNullOrEmpty(item))
+                {
+                    if(first)
+                    {
+                        first = false;
+                        if(item.Contains("SETS"))
+                        {
+                            setExists = true;
+                            mensaje = "Formato Correcto";
+                        }
+                        else if (item.Contains("TOKENS"))
+                 {
+                     tokenExists = true;
+                     mensaje = "Formato Correcto";
+                 }
+                 else
+                 {
+                     line = 1;
+                     return "Error en linea 1: Se esperaba SETS o TOKENS";
+                 }
+             }
+             else if (setExists)
+             {
+                 Match setMatch = Regex.Match(item, SETS);
+                 if (item.Contains("TOKENS"))
+                 {
+                     if (setCount < 1)
+                     {
+                         line = count;
+                         return "Error: Se esperaba almenos un SET";
+                     }
+                     setExists = false;
+                     tokenExists = true;
+                 }
+                 else
+                 {
+                     if (!setMatch.Success)
+                     {
+                         return $"Error en linea: {count}";
+                     }
+                     tokenCount++;
+                 }
+
+                 setCount++;
+             }
+            }
+             //   
+            }
         }
 =======
         public static Dictionary<int, string> actionReference = new Dictionary<int, string>();
 
 
         
->>>>>>> Stashed changes
     }
 
 
