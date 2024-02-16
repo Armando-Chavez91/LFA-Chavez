@@ -195,6 +195,37 @@ private static void CheckForRepeatedTokens(List<int> tokens, List<Action> action
              asciiValues.Add(character.ToString());
          }
      }
+          if (setName.Length > 1)
+     {
+         sets.Add(setName, asciiValues.ToArray());
+     }
+     else
+     {
+         throw new Exception($"El nombre del SET {setName} debe ser mas largo.");
+     }
+
+ }
+
+ private static int formatSET(string token)
+ {
+     int result;
+
+     if (token.Contains("CHR")) 
+     {
+         string value = token.Replace("CHR", "");
+         value = value.Replace("(", "");
+         value = value.Replace(")", "");
+         value = value.Replace(" ", "");
+
+         result = Convert.ToInt16(value);
+     }
+     else 
+     {
+         result = Encoding.ASCII.GetBytes(token)[1];
+     }
+
+     return result;
+ }
         }
 =======
         public static Dictionary<int, string> actionReference = new Dictionary<int, string>();
