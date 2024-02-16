@@ -322,20 +322,15 @@ private static void CheckForRepeatedTokens(List<int> tokens, List<Action> action
 
      if (string.IsNullOrEmpty(tokens) | string.IsNullOrWhiteSpace(tokens))
      {
-         tokens = $"({newToken})";
+         tokens = $"({NuevoToken})";
      }
      else
      {
-         tokens += $"|({newToken})";
+         tokens += $"|({NuevoToken})";
      }
  }
         }
-=======
+
         public static Dictionary<int, string> actionReference = new Dictionary<int, string>();
-
-
-        
     }
-
-
 }
