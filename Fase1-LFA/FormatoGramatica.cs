@@ -159,7 +159,19 @@ namespace Fase1_LFA
          }
      }
 
+    
+            if (!string.IsNullOrEmpty(functionName))
+            {
+                if (int.TryParse(token[0].Trim(), out int tokenNumber))
+                {
+                    actionReference.Add(tokenNumber, functionName.Trim());
+                }
+                else
+                {
+                    throw new Exception($"El nombre del TOKEN {token[0]} no es valido.");
+                }
 
+            }
      return token;
  }
 
