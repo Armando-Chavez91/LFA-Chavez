@@ -256,6 +256,30 @@ private static void CheckForRepeatedTokens(List<int> tokens, List<Action> action
 
      return result;
  }
+         private static void AddNewTOKEN(ref List<int> tokenNumbers, ref string tokens, string text) 
+ {
+     text = text.Replace("TOKEN", "");
+     text = text.Trim();
+     int tokenNumber = 0;
+
+     string[] line = SplitToken(text);
+
+    
+     if (int.TryParse(line[0].Trim(), out tokenNumber)) 
+     {
+         if (!tokenNumbers.Contains(tokenNumber))
+         {
+             tokenNumbers.Add(tokenNumber);
+         }
+         else
+         {
+             throw new Exception($"El TOKEN {tokenNumber} aparece mas de una vez.");
+         }
+     }
+     else
+     {
+         throw new Exception($"El nombre del TOKEN {line[0]} no es valido.");
+     }
         }
 =======
         public static Dictionary<int, string> actionReference = new Dictionary<int, string>();
