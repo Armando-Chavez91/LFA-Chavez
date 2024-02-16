@@ -34,7 +34,7 @@ namespace Fase1_LFA
          int line1 = 0;
          string text = File.ReadAllText(file);
          //Send line
-         TResult.Text = Classes.FormatoGramatica.AnalyseFile(text, ref line1);
+         TResult.Text = FormatoGramatica.AnalyseFile(text, ref line1);
          RTBGrammar.Text = text;
 
          if (TResult.Text.Contains("Correcto"))
