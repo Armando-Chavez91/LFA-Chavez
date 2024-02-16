@@ -1,3 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+
+
 namespace Fase1_LFA
 {
     public partial class Form1 : Form
@@ -11,7 +21,7 @@ namespace Fase1_LFA
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             DialogResult result = openFileDialog1.ShowDialog();
-            
+
             if (result == DialogResult.OK)
             {
                 AnalizarArchivo(openFileDialog1.FileName);
@@ -19,75 +29,80 @@ namespace Fase1_LFA
             else
             {
                 MessageBox.Show(@"Error al leer el archivo.");
-            }    
+            }
         }
 
-         private void button2_Click(object sender, EventArgs e)
-         {
-         this.Close();
-         }    
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-          private void AnalizarArchivo(string file)
- {
-    
-     TXTPath.Text = file;
-     RTBGrammar.Select(0, RTBGrammar.Lines.Length);
-     RTBGrammar.SelectionColor = Color.Black;
+        private void AnalizarArchivo(string file)
+        {
 
-     try
-     {
-         int line1 = 0;
-         string text = File.ReadAllText(file);
-         //Send line
-         TResult.Text = FormatoGramatica.AnalyseFile(text, ref line1);
-         RTBGrammar.Text = text;
+            TXTPath.Text = file;
+            RTBGrammar.Select(0, RTBGrammar.Lines.Length);
+            RTBGrammar.SelectionColor = Color.Black;
 
-         if (TResult.Text.Contains("Correcto"))
-         {
-             TResult.BackColor = Color.White;
-             TResult.ForeColor = Color.Cyan;
-         }
-         else
-         {
-             TResult.BackColor = Color.White;
-             TResult.ForeColor = Color.Crimson;
+            try
+            {
+                int line1 = 0;
+                string text = File.ReadAllText(file);
+                //Send line
+                TResult.Text = FormatoGramatica.AnalyseFile(text, ref line1);
+                RTBGrammar.Text = text;
 
-             //Ubicacion del error
-             int lineCounter = 0;
+                if (TResult.Text.Contains("Correcto"))
+                {
+                    TResult.BackColor = Color.White;
+                    TResult.ForeColor = Color.Cyan;
+                }
+                else
+                {
+                    TResult.BackColor = Color.White;
+                    TResult.ForeColor = Color.Crimson;
 
-             foreach (string line in RTBGrammar.Lines)
-             {
-                 if (line1 - 1 == lineCounter)
-                 {
-                     RTBGrammar.Select(RTBGrammar.GetFirstCharIndexFromLine(lineCounter), line.Length);
-                     RTBGrammar.SelectionColor = Color.Red;
-                 }
-                 lineCounter++;
-             }
-         }
+                    //Ubicacion del error
+                    int lineCounter = 0;
 
-     }
-     catch (Exception ex)
-     {
+                    foreach (string line in RTBGrammar.Lines)
+                    {
+                        if (line1 - 1 == lineCounter)
+                        {
+                            RTBGrammar.Select(RTBGrammar.GetFirstCharIndexFromLine(lineCounter), line.Length);
+                            RTBGrammar.SelectionColor = Color.Red;
+                        }
+                        lineCounter++;
+                    }
+                }
 
-         TResult.BackColor = Color.White;
-         TResult.ForeColor = Color.Crimson;
-         TResult.Text = @"Error en TOKENS";
-         MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
 
-         //Show in red all lines in tokens
-         int lineCounter = 0;
+                TResult.BackColor = Color.White;
+                TResult.ForeColor = Color.Crimson;
+                TResult.Text = @"Error en TOKENS";
+                MessageBox.Show(ex.Message);
 
-         foreach (string line in RTBGrammar.Lines)
-         {
-             if (line.Contains("TOKEN"))
-             {
-                 RTBGrammar.Select(RTBGrammar.GetFirstCharIndexFromLine(lineCounter), line.Length);
-                 RTBGrammar.SelectionColor = Color.Red;
-             }
-             lineCounter++;
-         }
-     }
- }
+                //Show in red all lines in tokens
+                int lineCounter = 0;
+
+                foreach (string line in RTBGrammar.Lines)
+                {
+                    if (line.Contains("TOKEN"))
+                    {
+                        RTBGrammar.Select(RTBGrammar.GetFirstCharIndexFromLine(lineCounter), line.Length);
+                        RTBGrammar.SelectionColor = Color.Red;
+                    }
+                    lineCounter++;
+                }
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

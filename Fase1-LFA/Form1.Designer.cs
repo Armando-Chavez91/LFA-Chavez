@@ -38,29 +38,29 @@
             // 
             // TXTPath
             // 
-            TXTPath.Location = new Point(100, 58);
+            TXTPath.Location = new Point(12, 52);
             TXTPath.Name = "TXTPath";
             TXTPath.Size = new Size(250, 27);
             TXTPath.TabIndex = 0;
             // 
             // TResult
             // 
-            TResult.Location = new Point(422, 165);
+            TResult.Location = new Point(12, 409);
             TResult.Name = "TResult";
-            TResult.Size = new Size(125, 27);
+            TResult.Size = new Size(438, 27);
             TResult.TabIndex = 1;
             // 
             // RTBGrammar
             // 
             RTBGrammar.Location = new Point(12, 128);
             RTBGrammar.Name = "RTBGrammar";
-            RTBGrammar.Size = new Size(404, 301);
+            RTBGrammar.Size = new Size(523, 230);
             RTBGrammar.TabIndex = 2;
             RTBGrammar.Text = "";
             // 
             // BTNUpload
             // 
-            BTNUpload.Location = new Point(100, 91);
+            BTNUpload.Location = new Point(12, 85);
             BTNUpload.Name = "BTNUpload";
             BTNUpload.Size = new Size(250, 29);
             BTNUpload.TabIndex = 3;
@@ -70,17 +70,18 @@
             // 
             // button2
             // 
-            button2.Location = new Point(422, 400);
+            button2.Location = new Point(456, 409);
             button2.Name = "button2";
             button2.Size = new Size(94, 29);
             button2.TabIndex = 4;
             button2.Text = "Salir";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(446, 142);
+            label1.Location = new Point(12, 377);
             label1.Name = "label1";
             label1.Size = new Size(88, 20);
             label1.TabIndex = 5;
