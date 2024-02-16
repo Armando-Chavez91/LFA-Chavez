@@ -133,6 +133,32 @@ namespace Fase1_LFA
 }
 }
 
+ private static string removeActionsFromExpression(string text, ref string functionName)
+ {
+     //Remove everything contained within {}
+     string result = "";
+
+     if (text.Contains('{') && text.Contains('}'))
+     {
+         for (int i = 0; i < text.Length; i++)
+         {
+             if (text[i] == '\'')
+             {
+                 result += $"'{text[i + 1]}'";
+                 i += 2;
+             }
+             
+             else
+             {
+                 result += text[i];
+             }
+         }
+         return result;
+     }
+
+     return text;
+ }
+        
  private static string[] SplitToken(string expression)
  {
      string functionName = "";
