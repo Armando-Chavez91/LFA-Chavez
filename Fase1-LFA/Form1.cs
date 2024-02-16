@@ -6,5 +6,10 @@ namespace Fase1_LFA
         {
             InitializeComponent();
         }
+
+        private void BTNUpload_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
