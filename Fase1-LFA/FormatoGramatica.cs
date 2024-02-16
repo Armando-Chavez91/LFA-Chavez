@@ -132,6 +132,26 @@ namespace Fase1_LFA
  } 
 }
 }
+
+private static void CheckForRepeatedTokens(List<int> tokens, List<Action> actionsList) 
+{
+    List<int> repeated = new List<int>();
+
+    foreach (var action in actionsList)
+    {
+        foreach (var item in action.ActionValues.Keys)
+        {
+            if (repeated.Contains(item) || tokens.Contains(item))
+            {
+                throw new Exception($"Error: El token {item} aparece más de una vez");
+            }
+            else
+            {
+                repeated.Add(item);
+            }
+        }
+    }
+}
     
  private static void AddNewSET(ref Dictionary<string, string[]> sets, string text)
  {
