@@ -22,37 +22,67 @@ namespace Fase1_LFA
             }    
         }
 
-         private void AnalizarArchivo(string file)
+          private void AnalizarArchivo(string file)
+ {
+    
+     TXTPath.Text = file;
+     RTBGrammar.Select(0, RTBGrammar.Lines.Length);
+     RTBGrammar.SelectionColor = Color.Black;
+
+     try
+     {
+         int line1 = 0;
+         string text = File.ReadAllText(file);
+         //Send line
+         TResult.Text = Classes.GrammarFormat.AnalyseFile(text, ref line1);
+         RTBGrammar.Text = text;
+
+         if (TResult.Text.Contains("Correcto"))
          {
-              int line1 = 0;
-                 string text = File.ReadAllText(file);
-                 //Send line
-                 TResult.Text = Classes.GrammarFormat.AnalyseFile(text, ref line1);
-                 RTBGrammar.Text = text;
-                
-                 if (TResult.Text.Contains("Correcto"))
-                 {
-                     TResult.BackColor = Color.White;
-                     TResult.ForeColor = Color.Cyan;
-                 }
-                 else
-                 {
-                     TResult.BackColor = Color.White;
-                     TResult.ForeColor = Color.Crimson;
-                
-                     //Ubicacion del error
-                     int lineCounter = 0;
-                
-                     foreach (string line in RTBGrammar.Lines)
-                     {
-                         if (line1 - 1 == lineCounter)
-                         {
-                             RTBGrammar.Select(RTBGrammar.GetFirstCharIndexFromLine(lineCounter), line.Length);
-                             RTBGrammar.SelectionColor = Color.Red;
-                         }
-                         lineCounter++;
-                     }
-                 }
+             TResult.BackColor = Color.White;
+             TResult.ForeColor = Color.Cyan;
          }
+         else
+         {
+             TResult.BackColor = Color.White;
+             TResult.ForeColor = Color.Crimson;
+
+             //Ubicacion del error
+             int lineCounter = 0;
+
+             foreach (string line in RTBGrammar.Lines)
+             {
+                 if (line1 - 1 == lineCounter)
+                 {
+                     RTBGrammar.Select(RTBGrammar.GetFirstCharIndexFromLine(lineCounter), line.Length);
+                     RTBGrammar.SelectionColor = Color.Red;
+                 }
+                 lineCounter++;
+             }
+         }
+
+     }
+     catch (Exception ex)
+     {
+
+         TResult.BackColor = Color.White;
+         TResult.ForeColor = Color.Crimson;
+         TResult.Text = @"Error en TOKENS";
+         MessageBox.Show(ex.Message);
+
+         //Show in red all lines in tokens
+         int lineCounter = 0;
+
+         foreach (string line in RTBGrammar.Lines)
+         {
+             if (line.Contains("TOKEN"))
+             {
+                 RTBGrammar.Select(RTBGrammar.GetFirstCharIndexFromLine(lineCounter), line.Length);
+                 RTBGrammar.SelectionColor = Color.Red;
+             }
+             lineCounter++;
+         }
+     }
+ }
     }
 }
