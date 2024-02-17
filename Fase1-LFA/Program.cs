@@ -8,8 +8,8 @@ namespace Fase1_LFA
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            // Para personalizar la configuración de la aplicación, como establecer configuraciones de alta DPI o la fuente predeterminada,
+            // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }
